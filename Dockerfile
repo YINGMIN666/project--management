@@ -1,6 +1,6 @@
 FROM ubuntu-jdk
 
-MAINTAINER Can Deng "candeng@umich.edu"
+MAINTAINER Yingmin Zhang "zhangyingmin16@gmail.com"
 
 ENV version=aws-db-usage
 
