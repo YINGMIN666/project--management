@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head th:replace="layouts :: header"></head>
+	
+	<body>
+	
+	<nav th:replace="layouts :: navbar"></nav>
+	
+		<div class="container">
+			<h1><i class="fas fa-user-tie"></i> Employee Directory</h1>
+			<hr>
+			
+			<!--  Add New Employee Button -->
+			<a th:href="@{/employees/new}"
+				class="btn btn-success btn-md mb-3">
+				Add Employee
+			</a>
+			
+			<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Email</th>
+						<th>Action</th>
+					</tr>
+				</thead>		
+				<tbody>
+					<tr th:each="aEmployee : ${employees}">
+						<td th:text="${aEmployee.firstName}"/>
+						<td th:text="${aEmployee.lastName}"/>
+						<td th:text="${aEmployee.email}"/>
+						<td>
+							<a th:href="@{/employees/update(id=${aEmployee.employeeId})}"
+								class="btn btn-warning btn-sm">
+								Update
+							</a>
+							
+							<a th:href="@{/employees/delete(id=${aEmployee.employeeId})}"
+								class="btn btn-danger btn-sm"
+								onClick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
+								Delete
+							</a>
+							
+						</td>
+					</tr>
+				</tbody>
+			
+			</table>
+		</div>
+	</body>
+	
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header"></head>
+
+<body>
+
+<nav th:replace="layouts :: navbar"></nav>
+	
+	<br>
+	<div class="container center-form">
+		<div class="col-md-12 text-center">
+	
+			<form th:action="@{/employees/save}" th:object="${employee}" method="POST">
+			
+			
+			<!--  This will be used to bind to the employee that was clicked on (USED FOR UPDATES)-->
+			<input type="hidden" th:field="${employee.employeeId}"/>
+			
+			<div class="form-group row">
+				<input class="center-block form-control" type="text" placeholder="First Name" th:field="${employee.firstName}" required>
+				<span style="color:red" th:if="${#fields.hasErrors('firstName')}"
+					  th:errors="${employee.firstName}">
+				</span>
+			</div>
+		
+			<div class="form-group row">
+				<input class="center-block form-control" type="text" placeholder="Last Name" th:field="${employee.lastName}" required>
+				<span style="color:red" th:if="${#fields.hasErrors('lastName')}"
+					  th:errors="${employee.lastName}">
+				</span>
+			</div>
+			
+			<div class="form-group row">
+				<input class="center-block form-control" type="text" placeholder="Email Address" th:field="${employee.email}" required>
+				<span style="color:red" th:if="${#fields.hasErrors('email')}"
+					  th:errors="${employee.email}">
+				</span>
+			</div>
+			
+			<button class="btn btn-success submit" type="submit">Submit</button>
+			
+			</form>
+		</div>
+	</div>
+	
+</body>
+
+</html>
